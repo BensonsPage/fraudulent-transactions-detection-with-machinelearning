@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7" />
+    <meta http-equiv="Content-Type" content="text/html; charset = iso-8859-1"/>
+    <meta name="viewport" content="width=device-width, height=device-height,  initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Fraudulent Transactions Detection Service" />
+    <meta name="keywords" content="Fraudulent Transactions Detection Service" />
+    <meta name="owner" content="Fraudulent Transactions Detection Service" />
+    <meta name="author" content="https://github.com/BensonsPage" />
+    <meta name="copyright" content="{{app_copyright}}" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,500" rel="stylesheet"/>
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css"  media = "screen"/>
+    <title> Fraudulent Transactions Detection Service </title>
+
+    <meta property="og:title" content="Fraudulent Transactions Detection Service" />
+  	<meta property="og:url" content="Fraudulent Transactions Detection Servicet" />
+    <meta property="og:description" content='Fraudulent Transactions Detection Service' />
+  	<meta property="og:type" content="article" />
+    <meta property="og:image" content="{{ url_for('static', filename='fraudulent-transactions-detection-service.jpg') }}" />
+  	<meta property="og:locale" content="en_GB" />
+  	<meta property="og:image:type" content="image/png" />
+  	<meta property="og:image:width" content="300" />
+  	<meta property="og:image:height" content="200" />
+</head>
+
+<body>
+<div class = "main_panel">
+    <div class = "intro">
+        <h1> Fraudulent Transactions Detection Service </h1>
+
+        <form method="POST" action="/">
+              {{ form.csrf_token }}
+                <div>
+                    {{ form.TX_TIME_DAYS.label }}
+                    {{ form.TX_TIME_DAYS(class_='query_field', placeholder='0.00') }}
+                    {% if form.TX_TIME_DAYS.errors %}
+                    <ul class="errors">
+                      {% for error in form.TX_TIME_DAYS.errors %}
+                        <li>{{ error }}</li>{% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                <div>
+                    {{ form.CUSTOMER_ID_AVG_AMOUNT_1DAY_WINDOW.label }}
+                    {{ form.CUSTOMER_ID_AVG_AMOUNT_1DAY_WINDOW(class_='query_field', placeholder='1.0') }}
+                    {% if form.CUSTOMER_ID_AVG_AMOUNT_1DAY_WINDOW.errors %}
+                    <ul class="errors">
+                      {% for error in form.CUSTOMER_ID_AVG_AMOUNT_1DAY_WINDOW.errors %}
+                        <li>{{ error }}</li>{% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                <div>
+                    {{ form.CUSTOMER_ID_AVG_AMOUNT_7DAY_WINDOW.label }}
+                    {{ form.CUSTOMER_ID_AVG_AMOUNT_7DAY_WINDOW(class_='query_field', placeholder='1.0') }}
+                    {% if form.CUSTOMER_ID_AVG_AMOUNT_7DAY_WINDOW.errors %}
+                    <ul class="errors">
+                      {% for error in form.CUSTOMER_ID_AVG_AMOUNT_7DAY_WINDOW.errors %}
+                        <li>{{ error }}</li>{% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                <div>
+                    {{ form.CUSTOMER_ID_AVG_AMOUNT_30DAY_WINDOW.label }}
+                    {{ form.CUSTOMER_ID_AVG_AMOUNT_30DAY_WINDOW(class_='query_field', placeholder='0.1') }}
+                    {% if form.CUSTOMER_ID_AVG_AMOUNT_30DAY_WINDOW.errors %}
+                    <ul class="errors">
+                      {% for error in form.CUSTOMER_ID_AVG_AMOUNT_30DAY_WINDOW.errors %}
+                        <li>{{ error }}</li>{% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                <div>
+                    {{ form.TERMINAL_ID_RISK_1DAY_WINDOW.label }}
+                    {{ form.TERMINAL_ID_RISK_1DAY_WINDOW(class_='query_field', placeholder='0.00') }}
+                    {% if form.TERMINAL_ID_RISK_1DAY_WINDOW.errors %}
+                    <ul class="errors">
+                      {% for error in form.TERMINAL_ID_RISK_1DAY_WINDOW.errors %}
+                        <li>{{ error }}</li>{% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                <div>
+                    {{ form.TERMINAL_ID_RISK_7DAY_WINDOW.label }}
+                    {{ form.TERMINAL_ID_RISK_7DAY_WINDOW(class_='query_field', placeholder='0.1') }}
+                    {% if form.TERMINAL_ID_RISK_7DAY_WINDOW.errors %}
+                    <ul class="errors">
+                      {% for error in form.TERMINAL_ID_RISK_7DAY_WINDOW.errors %}
+                        <li>{{ error }}</li>{% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                <div>
+                    {{ form.TERMINAL_ID_RISK_30DAY_WINDOW.label }}
+                    {{ form.TERMINAL_ID_RISK_30DAY_WINDOW(class_='query_field', placeholder='1.0') }}
+                    {% if form.TERMINAL_ID_RISK_30DAY_WINDOW.errors %}
+                    <ul class="errors">
+                      {% for error in form.TERMINAL_ID_RISK_30DAY_WINDOW.errors %}
+                        <li>{{ error }}</li>{% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+
+
+            <div class="terms"> * Apache License | Version 2.0, January 2004 | http://www.apache.org/licenses/ </div>
+              <div>
+                  {{ form.submit(class_='btn') }}
+              </div>
+            </form>
+
+        <h2> Response </h2>
+        {{response}}
+    </div>
+
+    <div class = "content">
+        <img src = "{{ url_for('static', filename='fraudulent-transactions-detection-service.jpg') }}" alt="Fraudulent Transactions Detection Service" />
+    </div>
+
+    <div class = "footer">
+        {{app_copyright}} <br />
+        <a href="https://www.pexels.com/photo/a-man-holding-a-letter-lightbox-6266500/"> Photo by Tima Miroshnichenko </a>
+    </div>
+
+</div>
+</body>
+
+</html>
+
+
+
+
+

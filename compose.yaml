@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  fraudulent-transactions-detection-service:
+    container_name: fraudulent-transactions-detection
+    build: ./fraudulent-transactions-detection-app
+    restart: always
+    ports:
+      - 8000:5000
+volumes:
+  data:
