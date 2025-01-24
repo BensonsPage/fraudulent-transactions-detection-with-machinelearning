@@ -19,7 +19,8 @@ app_copyright = (" © " + current_year + " | Fraudulent Transactions Detection S
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    response = ""
+    response = None
+    result = None
     form = Request()
 
     if form.validate_on_submit():
@@ -42,13 +43,16 @@ def index():
                          'TERMINAL_ID_RISK_7DAY_WINDOW': 0.00, 'TERMINAL_ID_RISK_30DAY_WINDOW': 0.00} # Fraud
 
         payload = [list( payload.values())]
-
         filename = 'rf_model.sav'
+        try:
+            ## Loading Model ( Only Randon Forest Was Saved)
+            loaded_model = pickle.load(open(filename, 'rb'))
+            result = loaded_model.predict(payload)
+        except NameError:
+            result = "Error during Classification"
+        else:
+            result = round(result.item())
 
-        ## Loading Model ( Only Randon Forest Was Saved)
-        loaded_model = pickle.load(open(filename, 'rb'))
-        result = loaded_model.predict(payload)
-        result = round(result.item())
 
         # Act on Model Result
         if result == 1:
